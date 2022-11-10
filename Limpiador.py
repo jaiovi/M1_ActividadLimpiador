@@ -14,17 +14,11 @@ def basic_example_space():
     m = 10
     n = 10
 
-    # Número de agentes
-    num_agentes = 3
-
-    # Porcentaje de celdas normalmente sucias
-    p_sucias = 0.6
-
-    # Tiempo máximo de ejecución del algoritmo. MINUTOS
-    tiempo_max = 2
-
-    # Nivel de carga máximo de los agentes. Puede ser en porcentaje o en unidades de carga.
-    carga_max = 100
+    num_agentes = 3 # Num de agentes
+    p_sucias = 0.6 # Celdas sucias en porcentaje
+    tiempo_max = 2 # MINUTOS max ejecutados
+    
+    carga_max = 100 # Nivel de carga máximo de los agentes. Puede ser en porcentaje o en unidades de carga.
 
     #PROGRAMA
     model = Board(m, n, num_agentes, p_sucias)

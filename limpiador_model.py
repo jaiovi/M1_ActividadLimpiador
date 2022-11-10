@@ -25,6 +25,8 @@ import pandas as pd
 
 # Definimos otros paquetes que vamos a usar para medir el tiempo de ejecución de nuestro algoritmo.
 
+import time
+import datetime
 
 import random
 
@@ -95,8 +97,8 @@ class Board(Model):
         self.num_agentes = num_agentes
         self.p_sucias = p_sucias
         self.schedule = SimultaneousActivation(self)
-        self.grid = MultiGrid(m,n,False) # Bool defines toroidal boundary
-        num_celdas_sucias = int(m*n*p_sucias)
+        self.grid = MultiGrid(m,n,False) # Bool define toroidas
+        num_celdas_sucias = int(m*n*p_sucias) #num de celdas sucias a crear
 
         #creamos el grid random de 1 y 0
         for (content,x,y) in self.grid.coord_iter():
@@ -108,6 +110,8 @@ class Board(Model):
                 a = Cell((x,y), self, 0)
             self.grid.place_agent(a,(x,y))
             self.schedule.add(a)
+
+        #iniciliza scheduler para los agentes
         for id in range(num_agentes):
             r = CleanAgent(id, self)
             self.grid.place_agent(r, (1,1))
